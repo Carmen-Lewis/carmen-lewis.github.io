@@ -11,5 +11,7 @@
     --dark-color: #1A1A1A;
 
     --primary-font: 'Montserrat', sans-serif;
-    --body-font: 'Montagu Slab', serif;
+    --accent-font: 'Montagu Slab', serif;
+
+    --primary-logo: url('images/website-icon.png');
 }

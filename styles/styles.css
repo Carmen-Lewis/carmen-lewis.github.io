@@ -1,2 +1,42 @@
 @import "variables.css";
 
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    background-color: var(--primary-color);
+}
+
+h1 {
+    font: var(--accent-font);
+}
+
+.landing-page {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--light-color);
+}
+
+.logo {
+    width: 50vw; /* Adjust width as needed */
+    height: 100%;
+    background-image: url('images/website-icon.png');
+    background-size: cover;
+    background-position: center right;
+}
+
+.copyright {
+    position: absolute;
+    bottom: 50px;
+    color: var(--dark-color);
+    font-size: 10px;
+
+    span {
+        display: inline-block;
+        margin: 0 5px;
+        font: var(--accent-font);
+    }
+}
