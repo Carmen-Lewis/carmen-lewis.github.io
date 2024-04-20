@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
 :root {
     --primary-color: #FCBF49;
     --secondary-color: #D41956;
@@ -6,4 +9,7 @@
     --accent-color-light: #1DB8A0;
     --light-color: #FBF9F4;
     --dark-color: #1A1A1A;
-  }
+
+    --primary-font: 'Montserrat', sans-serif;
+    --body-font: 'Montagu Slab', serif;
+}
