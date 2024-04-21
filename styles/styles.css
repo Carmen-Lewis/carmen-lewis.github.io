@@ -7,7 +7,7 @@
     --secondary-color-light: #EF4653;
     --accent-color: #3D3FE0;
     --accent-color-light: #1DB8A0;
-    --light-color: #FBF9F4;
+    --light-color: #F5F3EE;
     --dark-color: #1A1A1A;
 
     --primary-font: 'Montserrat', sans-serif;
@@ -24,38 +24,76 @@ body {
     color: var(--dark-color);
 }
 
-h1 {
+h1, h2, h3 {
     font-family: var(--accent-font); /* Use font-family property */
 }
 
 .landing-page {
+    position: relative;
     height: 100vh;
     display: flex;
+    align-items: center;
+    justify-content: center;
 
     .left-section {
         flex: 1;
         background-color: white;
         flex-shrink: 0;
+        width: 50%;
+        z-index: 0;
     }
     
     .right-section {
+        position: absolute;
+        right: 0;
         flex: 1;
-        background-color: var(--primary-color);
+        background-color: var(--light-color);
         flex-shrink: 0;
         min-height: 100%;
+        z-index: 2;
+        width: 50%;
+        align-items: center;
+        justify-content: center;
+        transition: width 1s ease; /* Add transition for smooth width change */
+    }
+
+    img {
+        display: block; /* Ensure the image is treated as a block element */
+        width: 35%; /* Ensure the image fills its container width */
+        height: auto; /* Maintain aspect ratio */
+        z-index: 1;
+        position: absolute;
+        align-items: center;
+        justify-content: center;
     }
 }
 
-.logo {
-    width: 200px; /* Adjust size as needed */
-    height: 200px; /* Adjust size as needed */
-    background-image: url('images/website-icon.png');
-    background-size: cover;
-    background-position: center;
+.header-banner {
+    height: 150px;
+    align-items: center;
+    display: none; /* Hide the icon initially */
+    z-index: 3;
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+
+    .header-items {
+        height: 100px;
+        width: 100%;
+        position: fixed;
+        top: 50px; /* Adjust as needed */
+        left: 50px; /* Adjust as needed */
+        display: flex;
+        align-items: center;
+    
+        .icon {
+            width: 100px;
+            height: 100px;
+        }
+
+        .title {
+            margin-left: 25px; /* Adjust as needed */
+            font-weight: normal;
+        }
+    }
 }
 
 .copyright {
@@ -63,10 +101,31 @@ h1 {
     bottom: 50px;
     color: var(--dark-color);
     font-size: 10px;
+    z-index: 3;
 
     span {
         display: inline-block;
         margin: 0 5px;
         font-family: var(--accent-font);
     }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes expandRightSection {
+    0% { width: 50%; }
+    100% { width: 75%; }
+}
+
+.landing.pulse {
+    animation: pulse 2s infinite; /* Apply pulse animation to logo */
+}
+
+.expand {
+    animation: expandRightSection 3s forwards; /* Apply expand animation to right section */
+    animation-delay: 1s; /* Delay the start of the animation by 3 seconds */
 }
