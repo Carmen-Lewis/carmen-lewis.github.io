@@ -12,8 +12,6 @@
 
     --primary-font: 'Montserrat', sans-serif;
     --accent-font: 'Montagu Slab', serif;
-
-    --primary-logo: url('images/website-icon.png');
 }
 
 body {
@@ -34,38 +32,38 @@ h1, h2, h3 {
     display: flex;
     align-items: center;
     justify-content: center;
+}
 
-    .left-section {
-        flex: 1;
-        background-color: white;
-        flex-shrink: 0;
-        width: 50%;
-        z-index: 0;
-    }
+.landing-page .left-section {
+    flex: 1;
+    background-color: white;
+    flex-shrink: 0;
+    width: 50%;
+    z-index: 0;
+}
     
-    .right-section {
-        position: absolute;
-        right: 0;
-        flex: 1;
-        background-color: var(--light-color);
-        flex-shrink: 0;
-        min-height: 100%;
-        z-index: 2;
-        width: 50%;
-        align-items: center;
-        justify-content: center;
-        transition: width 1s ease; /* Add transition for smooth width change */
-    }
+.landing-page .right-section {
+    position: absolute;
+    right: 0;
+    flex: 1;
+    background-color: var(--light-color);
+    flex-shrink: 0;
+    min-height: 100%;
+    z-index: 2;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+    transition: width 1s ease; /* Add transition for smooth width change */
+}
 
-    img {
-        display: block; /* Ensure the image is treated as a block element */
-        width: 35%; /* Ensure the image fills its container width */
-        height: auto; /* Maintain aspect ratio */
-        z-index: 1;
-        position: absolute;
-        align-items: center;
-        justify-content: center;
-    }
+.landing-page img {
+    display: block; /* Ensure the image is treated as a block element */
+    width: 35%; /* Ensure the image fills its container width */
+    height: auto; /* Maintain aspect ratio */
+    z-index: 1;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
 }
 
 .header-banner {
@@ -74,26 +72,90 @@ h1, h2, h3 {
     display: none; /* Hide the icon initially */
     z-index: 3;
     position: absolute;
+}
 
-    .header-items {
-        height: 100px;
-        width: 100%;
-        position: fixed;
-        top: 50px; /* Adjust as needed */
-        left: 50px; /* Adjust as needed */
-        display: flex;
-        align-items: center;
+.header-banner .header-items {
+    height: 100px;
+    width: 100%;
+    position: fixed;
+    top: 50px; /* Adjust as needed */
+    left: 50px; /* Adjust as needed */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header-items .title-container {
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
     
-        .icon {
-            width: 100px;
-            height: 100px;
-        }
+.header-items .icon {
+    width: 100px;
+    height: 100px;
+}
 
-        .title {
-            margin-left: 25px; /* Adjust as needed */
-            font-weight: normal;
-        }
-    }
+.header-items .title {
+    margin-left: 25px; /* Adjust as needed */
+    font-weight: normal;
+}
+
+.header-items .menu-container {
+    margin-right: 50px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.menu-items {
+    display: none;
+    list-style-type: none; /* Remove bullet points */
+    /*  display: flex; */
+}
+
+.menu-items.open {
+    display: flex; /* Display the menu items when open */
+}
+            
+.menu-items li {
+    margin-right: 50px; /* Adjust the margin as needed */
+}
+
+.menu-items li:hover a {
+    background-color: var(--secondary-color); /* Change to desired highlight color */
+    transition: background-color 0.3s; /* Smooth transition */
+    padding: 5px;
+    color: white;
+}
+
+.menu-items a {
+    font-family: var(--accent-font);
+    text-decoration: none;
+    color: var(--dark-color);
+    padding: 5px;
+}
+
+.menu-icon {
+    margin-right: 50px;
+    width: 50px;
+    height: 50px;
+    background-image: url('/images/menu-icon-dark.png');
+    background-size: contain;
+    cursor: pointer;
+    transition: transform 0.3s; /* Add transition for smooth rotation */
+}
+
+.menu-icon.flip {
+    transform: scaleX(-1); /* Return to original orientation when menu is open */
+}
+
+.menu-icon:hover {
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+    background-image: url('/images/menu-icon-light.png');
+    background-size: contain;
 }
 
 .copyright {
@@ -102,12 +164,11 @@ h1, h2, h3 {
     color: var(--dark-color);
     font-size: 10px;
     z-index: 3;
-
-    span {
-        display: inline-block;
-        margin: 0 5px;
-        font-family: var(--accent-font);
-    }
+}
+.copyright span {
+    display: inline-block;
+    margin: 0 5px;
+    font-family: var(--accent-font);
 }
 
 @keyframes pulse {
