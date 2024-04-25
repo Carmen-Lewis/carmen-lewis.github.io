@@ -194,7 +194,7 @@ h1, h2, h3 {
     width: 27%;
 }
 
-.main-container a {
+.main-container p a {
     text-decoration: none;
     background-color: var(--primary-color);
     color: var(--dark-color);
@@ -212,19 +212,41 @@ h1, h2, h3 {
     display: flex;
     justify-content: space-between;
     left: 0;
-    background-color: #FCBF49;
     width: 180px;;
     height: 50px;
 }
 
-.socials-icon {
+.socials-icon{
     width: 50px;
     height: 50px;
-    background-image: url('/images/menu-icon-dark.png');
-    background-size: contain;
-    cursor: pointer;
     background-color: var(--accent-color-light);
     border-radius: 50%;
+    background-size: 60%; /* Adjust the size of the icon */
+    background-position: center; /* Center the icon */
+    background-repeat: no-repeat; /* Prevent the icon from repeating */
+    cursor: pointer;
+    transition: transform 0.3s;
+
+    a {
+
+    }
+
+    &:hover {
+        background-color: var(--accent-color);
+        transform: scale(1.1);
+    }
+}
+
+.socials-icon.email {
+    background-image: url('/images/email-light.png');
+}
+
+.socials-icon.linkedin {
+    background-image: url('/images/linkedin-light.png');
+}
+
+.socials-icon.github {
+    background-image: url('/images/github-light.png');
 }
 
 .copyright {
