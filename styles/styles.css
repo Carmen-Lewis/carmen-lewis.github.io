@@ -12,8 +12,6 @@
 
     --primary-font: 'Montserrat', sans-serif;
     --accent-font: 'Montagu Slab', serif;
-
-    --primary-logo: url('images/website-icon.png');
 }
 
 body {
@@ -22,10 +20,15 @@ body {
     height: 100%;
     overflow: hidden;
     color: var(--dark-color);
+    font-family: var(--primary-font);
 }
 
 h1, h2, h3 {
     font-family: var(--accent-font); /* Use font-family property */
+}
+
+.accent-font {
+    font-family: var(--accent-font);
 }
 
 .landing-page {
@@ -34,80 +37,213 @@ h1, h2, h3 {
     display: flex;
     align-items: center;
     justify-content: center;
+}
 
-    .left-section {
-        flex: 1;
-        background-color: white;
-        flex-shrink: 0;
-        width: 50%;
-        z-index: 0;
-    }
+.landing-page .left-section {
+    flex: 1;
+    background-color: white;
+    flex-shrink: 0;
+    width: 50%;
+    z-index: 0;
+}
     
-    .right-section {
-        position: absolute;
-        right: 0;
-        flex: 1;
-        background-color: var(--light-color);
-        flex-shrink: 0;
-        min-height: 100%;
-        z-index: 2;
-        width: 50%;
-        align-items: center;
-        justify-content: center;
-        transition: width 1s ease; /* Add transition for smooth width change */
-    }
+.landing-page .right-section {
+    position: absolute;
+    right: 0;
+    flex: 1;
+    background-color: var(--light-color);
+    flex-shrink: 0;
+    min-height: 100%;
+    z-index: 2;
+    width: 50%;
+    align-items: center;
+    justify-content: center;
+    transition: width 1s ease; /* Adjust the duration here */
+}
 
-    img {
-        display: block; /* Ensure the image is treated as a block element */
-        width: 35%; /* Ensure the image fills its container width */
-        height: auto; /* Maintain aspect ratio */
-        z-index: 1;
-        position: absolute;
-        align-items: center;
-        justify-content: center;
+.enter {
+    display: block; /* Ensure the image is treated as a block element */
+    width: auto; /* Ensure the image fills its container width */
+    height: 50%; /* Maintain aspect ratio */
+    z-index: 1;
+    position: absolute;
+    transition: transform 0.3s; /* Add transition effect */
+
+    &:hover{
+        transform: scale(1.3)
     }
 }
 
 .header-banner {
     height: 150px;
     align-items: center;
-    display: none; /* Hide the icon initially */
     z-index: 3;
     position: absolute;
+}
 
-    .header-items {
-        height: 100px;
-        width: 100%;
-        position: fixed;
-        top: 50px; /* Adjust as needed */
-        left: 50px; /* Adjust as needed */
-        display: flex;
-        align-items: center;
+.header-items {
+    height: 100px;
+    width: auto;
+    position: fixed;
+    top: 50px;
+    /*left: 50px;*/
+    left: 5%;
+    right: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.title-container {
+    height: 100px;
+    display: flex;
+    align-items: center;
+}
     
-        .icon {
-            width: 100px;
-            height: 100px;
-        }
+.header-items .icon {
+    width: 100px;
+    height: 100px;
+}
 
-        .title {
-            margin-left: 25px; /* Adjust as needed */
-            font-weight: normal;
-        }
+.header-items .title {
+    margin-left: 25px; /* Adjust as needed */
+    font-weight: normal;
+}
+
+.menu-container {
+    height: 100px;
+    width: auto;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.menu-items {
+    display: none;
+    list-style-type: none; /* Remove bullet points */
+}
+
+.menu-items.open {
+    display: flex; /* Display the menu items when open */
+}
+            
+.menu-items li {
+    margin-right: 50px; /* Adjust the margin as needed */
+}
+
+.menu-items li:hover a {
+    background-color: var(--secondary-color); /* Change to desired highlight color */
+    transition: background-color 0.3s; /* Smooth transition */
+    padding: 5px;
+    color: white;
+}
+
+.menu-items a {
+    font-family: var(--accent-font);
+    text-decoration: none;
+    color: var(--dark-color);
+    padding: 5px;
+}
+
+.menu-icon {
+    width: 50px;
+    height: 50px;
+    background-image: url('/images/menu-icon-dark.png');
+    background-size: contain;
+    cursor: pointer;
+    transition: transform 0.3s; /* Add transition for smooth rotation */
+}
+
+.menu-icon.flip {
+    transform: scaleX(-1); /* Return to original orientation when menu is open */
+}
+
+.menu-icon:hover {
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+    background-image: url('/images/menu-icon-light.png');
+    background-size: contain;
+}
+
+.right-section {
+    position: fixed;
+    right: 0;
+    top: 0;
+    background-color: var(--light-color);
+    min-height: 100%;
+    z-index: 2;
+    width: 75%;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-container {
+    z-index: 5;
+    width: 100%;
+    top: 180px;
+    left: 15%;
+    position: relative;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    line-height: 25px;
+}
+
+.main-container p {
+    width: 27%;
+}
+
+.main-container a {
+    text-decoration: none;
+    background-color: var(--primary-color);
+    color: var(--dark-color);
+    padding: 3px;
+    transition: transform 0.3s; /* Add transition effect */
+    position: relative;
+    display: inline-block;
+
+    &:hover {
+        transform: scale(1.1); /* Increase size by 10% on hover */
     }
 }
 
+.socials {
+    display: flex;
+    justify-content: space-between;
+    left: 0;
+    background-color: #FCBF49;
+    width: 180px;;
+    height: 50px;
+}
+
+.socials-icon {
+    width: 50px;
+    height: 50px;
+    background-image: url('/images/menu-icon-dark.png');
+    background-size: contain;
+    cursor: pointer;
+    background-color: var(--accent-color-light);
+    border-radius: 50%;
+}
+
 .copyright {
-    position: absolute;
+    position: fixed;
     bottom: 50px;
+    left: 0;
+    right: 0;
     color: var(--dark-color);
     font-size: 10px;
     z-index: 3;
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
 
-    span {
-        display: inline-block;
-        margin: 0 5px;
-        font-family: var(--accent-font);
-    }
+.copyright span {
+    display: inline-block;
+    margin: 0 5px;
+    font-family: var(--accent-font);
 }
 
 @keyframes pulse {
@@ -116,16 +252,51 @@ h1, h2, h3 {
     100% { transform: scale(1); }
 }
 
-@keyframes expandRightSection {
-    0% { width: 50%; }
-    100% { width: 75%; }
+@media (max-width: 1000px) {
+    .menu-container {
+        position: relative;
+    }
+
+    .menu-items {
+        order: 2;
+        display: none;
+        flex-direction: column; /* Stack items vertically */
+        align-items: flex-end; /* Align items to the right */
+        margin-top: 250px; /* Add margin between menu and title */
+        left: 5%;
+        padding: 0;
+        z-index: 999;
+    }
+
+    .menu-icon {
+        position: absolute;
+        order: 1;
+        margin-top: auto;
+    }
+
+    /* allows spaces between sections */
+    .menu-items li {
+        margin-bottom: 10px; /* Add bottom margin for spacing */
+        margin-right: 0;
+        vertical-align: middle;
+        z-index: 999;
+    }
+
+    .main-container {
+        z-index: 1;
+    }
+
+    .right-section {
+        z-index: 0;
+    }
+
+    .main-container p {
+        width: 50%;
+    }
 }
 
-.landing.pulse {
-    animation: pulse 2s infinite; /* Apply pulse animation to logo */
-}
-
-.expand {
-    animation: expandRightSection 3s forwards; /* Apply expand animation to right section */
-    animation-delay: 1s; /* Delay the start of the animation by 3 seconds */
+@media (max-width: 500px) {
+    .main-container p {
+        width: 50%;
+    }
 }

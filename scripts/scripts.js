@@ -1,10 +1,19 @@
 window.onload = function() {
-    setTimeout(function() {
-        var rightSection = document.querySelector('.right-section');
-        var headerBanner = document.querySelector('.header-banner');
-        headerBanner.style.display = 'flex'; // Show the header banner
+    const enterLink = document.querySelector('.enter');
+    const rightSection = document.querySelector('.right-section');
+    
+    enterLink.addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default link behavior
+        
+        // Expand the right section
+        rightSection.style.width = '75%';
+        
+        // Hide the "Enter" link
+        enterLink.style.opacity = '0';
+        
+        // Redirect to main.html after the transition animation finishes
         setTimeout(function() {
-            rightSection.classList.add('expand');
-        }, 3000); // Delay the expand animation by 3000ms (3 seconds) after the landing animation
-    }, 3000); // Delay for 3000ms (3 seconds) before starting the animations
+            window.location.href = "pages/main.html";
+        }, 1000); // Adjust the delay to match the duration of your transition animation
+    });
 };
