@@ -13,7 +13,7 @@ window.onload = function() {
         
         // Redirect to main.html after the transition animation finishes
         setTimeout(function() {
-            window.location.href = "pages/main.html";
+            window.location.href = "pages/temporary_main.html";
         }, 1000); // Adjust the delay to match the duration of your transition animation
     });
 };
