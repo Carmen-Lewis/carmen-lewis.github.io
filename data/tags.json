@@ -1,0 +1,20 @@
+{
+    "tags": [
+        {
+            "name": "data science",
+            "description": "Topics related to data analysis, machine learning, and statistics."
+        },
+        {
+            "name": "python",
+            "description": "Topics related to the Python programming language."
+        },
+        {
+            "name": "machine learning",
+            "description": "Topics related to machine learning algorithms and techniques."
+        },
+        {
+            "name": "solar radiation",
+            "description": "Topics related to solar radiation theory and application."
+        }
+    ]
+}
