@@ -1,5 +1,5 @@
 // Function to fetch list of files from a folder in GitHub repository
-async function fetchFilesFromFolder(all-other-pages) {
+async function fetchFilesFromFolder(folderPath) {
     const response = await fetch(`https://api.github.com/repos/Carmen-Lewis/carmen-lewis.github.io/contents/${folderPath}`);
     const data = await response.json();
     return data;
@@ -17,7 +17,7 @@ function generateCardsFromFiles(files) {
             const fileName = file.name.replace('.html', '');
             card.innerHTML = `
                 <a href="${folderPath}/${file.name}">
-                    <h2>${fileName}</h2>
+                    <h2>${file.title}</h2>
                 </a>
             `;
 
@@ -27,7 +27,7 @@ function generateCardsFromFiles(files) {
 }
 
 // Specify the folder path in your GitHub repository
-const folderPath = 'pages';
+const folderPath = 'pages/all-other-pages';
 
 // Fetch files from the specified folder and generate cards
 fetchFilesFromFolder(folderPath)
