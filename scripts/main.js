@@ -15,13 +15,18 @@ window.onload = function() {
     const itemWidth = 350
     const padding = 20
 
-    prev.addEventListener('click',()=>{
-        list.scrollLeft -= itemWidth + padding
-    })
+    if (prev && next && list) {
+        const itemWidth = 350;
+        const padding = 20;
 
-    next.addEventListener('click',()=>{
-        list.scrollLeft += itemWidth + padding
-    })
+        prev.addEventListener('click', () => {
+            list.scrollLeft -= itemWidth + padding;
+        });
+
+        next.addEventListener('click', () => {
+            list.scrollLeft += itemWidth + padding;
+        });
+    }
 
     const searchIcon = document.querySelector('.search-icon');
     const searchBar = document.getElementById('search-bar');
