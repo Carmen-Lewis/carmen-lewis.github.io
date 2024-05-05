@@ -18,14 +18,10 @@ function extractMetadataFromHTML(htmlContent) {
     const author = doc.querySelector('meta[name="author"]').getAttribute('content') || '';
     const date = doc.querySelector('meta[name="date"]').getAttribute('content') || '';
     const type = doc.querySelector('meta[name="type"]').getAttribute('content') || '';
-    console.log('Title element:', doc.querySelector('image'));
     return { title, description, image, keywords, author, date, type };
 }
 
 // Function to generate card elements based on file names and metadata
-//                    <div class="card-preview-horizontal">
-// <img src="/images/card-preview-placeholder.png" alt="Card Image">
-//</div>
 async function generateCardsFromFiles(files) {
     const container = document.querySelector('.card-container');
 
@@ -36,14 +32,22 @@ async function generateCardsFromFiles(files) {
 
             const response = await fetch(file.download_url);
             const htmlContent = await response.text();
-
             const { title, description, image, keywords, author, date, type } = extractMetadataFromHTML(htmlContent);
-            
-            card.innerHTML = `
-                <a href="${folderPath}/${file.name}">
 
-                    <p><span class="type">${type}</span>${title}</p>
-                    <p>${description}</p>
+            card.innerHTML = `
+                <a href="/${folderPath}/${file.name}">
+                    <div class="card-inner">
+                        <div class="card-preview-horizontal">
+                            <img src="${image}" alt="Card Image">
+                        </div>
+                        <div class="card-preview-text">
+                            <p>
+                                <span class="type">${type}</span>${title}
+                            </p>
+                            <p>${description}</p>
+                            <div class="tag-cloud"></div>
+                        </div>
+                    </div>
                 </a>
             `;
 

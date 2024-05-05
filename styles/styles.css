@@ -348,6 +348,10 @@ mark {
     margin-bottom: 30px;
 }
 
+.card-inner {
+    display: flex;
+    flex-direction: row;
+}
 
 .card-preview-horizontal {
     position: relative;
@@ -545,7 +549,6 @@ a:hover::after {
     position: relative;
     flex-wrap: wrap;
     width: 100%;
-    left: 50px;
   }
   
   .tag {
