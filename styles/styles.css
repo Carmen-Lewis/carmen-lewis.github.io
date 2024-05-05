@@ -29,6 +29,10 @@ h1, h2, h3 {
     font-weight: 400;
 }
 
+p {
+    font-family: var(--primary-font);
+}
+
 mark {
     background-color: var(--primary-color);
     padding: 2px;
@@ -469,7 +473,7 @@ a:hover::after {
     }
 }
 
-#search-bar {
+.search-bar {
     position: absolute;
     left: 10px;
     border: none;
@@ -486,7 +490,7 @@ a:hover::after {
     }
 }
 
-.search-container #search-bar:focus {
+.search-container .search-bar:focus {
     outline: none;
     border: 2px solid var(--primary-color);
 }

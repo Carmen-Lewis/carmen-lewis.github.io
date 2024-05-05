@@ -31,18 +31,18 @@ window.onload = function() {
     const searchIcon = document.querySelector('.search-icon');
     const searchBar = document.getElementById('search-bar');
 
-    searchBar.style.display = 'none';
+    // searchBar.style.display = 'none';
 
-    searchIcon.addEventListener('click', function() {
+    // searchIcon.addEventListener('click', function() {
         // Toggle the visibility of the search bar
-        if (searchBar.style.display === 'none') {
-            searchBar.style.display = 'block';
-            searchIcon.classList.add('search-selected');
-        } else {
-            searchBar.style.display = 'none';
-            searchIcon.classList.remove('search-selected');
-        }
-    });
+    //    if (searchBar.style.display === 'none') {
+    //        searchBar.style.display = 'block';
+    //        searchIcon.classList.add('search-selected');
+    //    } else {
+    //        searchBar.style.display = 'none';
+    //        searchIcon.classList.remove('search-selected');
+    //    }
+    //});
 
     // Fetch the JSON data
     fetch('/data/tags.json')

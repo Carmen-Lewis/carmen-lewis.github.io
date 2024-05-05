@@ -1,3 +1,6 @@
+// Specify the folder path in your GitHub repository
+const folderPath = 'pages/all-other-pages';
+
 // Function to fetch list of files from a folder in GitHub repository
 async function fetchFilesFromFolder(folderPath) {
     const response = await fetch(`https://api.github.com/repos/Carmen-Lewis/carmen-lewis.github.io/contents/${folderPath}`);
@@ -10,14 +13,19 @@ function extractMetadataFromHTML(htmlContent) {
     const doc = new DOMParser().parseFromString(htmlContent, 'text/html');
     const title = doc.querySelector('title').textContent || '';
     const description = doc.querySelector('meta[name="description"]').getAttribute('content') || '';
+    const image = doc.querySelector('meta[name="image"]').getAttribute('content') || '';
     const keywords = doc.querySelector('meta[name="keywords"]').getAttribute('content') || '';
     const author = doc.querySelector('meta[name="author"]').getAttribute('content') || '';
     const date = doc.querySelector('meta[name="date"]').getAttribute('content') || '';
     const type = doc.querySelector('meta[name="type"]').getAttribute('content') || '';
-    return { title, description, keywords, author, date, type };
+    console.log('Title element:', doc.querySelector('image'));
+    return { title, description, image, keywords, author, date, type };
 }
 
 // Function to generate card elements based on file names and metadata
+//                    <div class="card-preview-horizontal">
+// <img src="/images/card-preview-placeholder.png" alt="Card Image">
+//</div>
 async function generateCardsFromFiles(files) {
     const container = document.querySelector('.card-container');
 
@@ -28,15 +36,13 @@ async function generateCardsFromFiles(files) {
 
             const response = await fetch(file.download_url);
             const htmlContent = await response.text();
-            const { title, description } = extractMetadataFromHTML(htmlContent);
 
-            const cardText = "card-preview-text";
-            const typeStyle = "type";
+            const { title, description, image, keywords, author, date, type } = extractMetadataFromHTML(htmlContent);
             
             card.innerHTML = `
                 <a href="${folderPath}/${file.name}">
-                    <span class="${typeStyle}">${type}</span>${title}
-                    <h2>${title}</h2>
+
+                    <p><span class="type">${type}</span>${title}</p>
                     <p>${description}</p>
                 </a>
             `;
@@ -45,9 +51,6 @@ async function generateCardsFromFiles(files) {
         }
     }
 }
-
-// Specify the folder path in your GitHub repository
-const folderPath = 'pages/all-other-pages';
 
 // Fetch files from the specified folder and generate cards
 fetchFilesFromFolder(folderPath)
