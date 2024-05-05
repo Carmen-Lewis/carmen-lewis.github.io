@@ -29,6 +29,11 @@ h1, h2, h3 {
     font-weight: 400;
 }
 
+mark {
+    background-color: var(--primary-color);
+    padding: 2px;
+}
+
 .accent-font {
     font-family: var(--accent-font);
 }
@@ -199,7 +204,7 @@ h1, h2, h3 {
     z-index: 5;
     width: 100%;
     top: 180px;
-    left: 9%;
+    left: 5.5%;
     position: relative;
     height: 100vh;
     line-height: 25px;
@@ -211,6 +216,12 @@ h1, h2, h3 {
     width: 27%;
     left: 0;
     padding-right: 15px;
+}
+
+.elsewhere-container {
+    position: fixed;
+    width: 100%;
+    bottom: 50px;
 }
 
 .right-main-container {
@@ -361,6 +372,7 @@ a {
     position: relative; /* Position relative to create space for the line */
     display: inline-block;
     font-family: var(--accent-font);
+    color: var(--dark-color);
 }
 
 a:visited {
@@ -373,7 +385,7 @@ p a::after {
     left: -5px; /* Align with the left edge of the parent */
     bottom: 0; /* Position below the text */
     width: 100%; /* Full width */
-    height: 2px; /* Height of the line */
+    height: 4px; /* Height of the line */
     background-color: var(--primary-color); /* Yellow color */
     transition: height 0.3s; /* Add transition for smooth effect */
     z-index: -1;
@@ -382,6 +394,10 @@ p a::after {
 
 a:hover::after {
     height: 60%; /* Increase height on hover */
+}
+
+.main-link:hover {
+    transform: scale(1.1);
 }
 
 .socials {
@@ -612,6 +628,7 @@ a:hover::after {
 
     .main-container {
         z-index: 1;
+        display: inline;
     }
 
     .right-section {
@@ -620,10 +637,6 @@ a:hover::after {
 
     .left-main-container {
         width: 50%;
-    }
-
-    .main-container {
-        display: inline;
     }
 
     .socials {
