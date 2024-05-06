@@ -1,5 +1,8 @@
 window.onload = function() {
 
+    const fullPage = document.querySelector('.full-page');
+    fullPage.style.height = `${window.innerHeight}px`;
+
     const menuIcon = document.querySelector('.menu-icon');
     const menuItems = document.querySelector('.menu-items');
 

@@ -14,7 +14,10 @@ function extractMetadataFromHTML(htmlContent) {
     const title = doc.querySelector('title').textContent || '';
     const description = doc.querySelector('meta[name="description"]').getAttribute('content') || '';
     const image = doc.querySelector('meta[name="image"]').getAttribute('content') || '';
-    const keywords = doc.querySelector('meta[name="keywords"]').getAttribute('content') || '';
+    const keywordsString = doc.querySelector('meta[name="keywords"]').getAttribute('content') || ''; // Get keywords string
+    console.log('Keywords string:', keywordsString); // Debugging: Check the value of keywordsString
+    const keywords = keywordsString.split(',').map(keyword => keyword.trim()); // Split keywords string into array
+    console.log('Keywords array:', keywords); // Debugging: Check the value of keywords array
     const author = doc.querySelector('meta[name="author"]').getAttribute('content') || '';
     const date = doc.querySelector('meta[name="date"]').getAttribute('content') || '';
     const type = doc.querySelector('meta[name="type"]').getAttribute('content') || '';
@@ -30,25 +33,30 @@ async function generateCardsFromFiles(files) {
             const card = document.createElement('div');
             card.classList.add('card');
 
+            // Add click event listener to the card
+            card.addEventListener('click', () => {
+                window.location.href = `/${folderPath}/${file.name}`;
+            });
+
             const response = await fetch(file.download_url);
             const htmlContent = await response.text();
             const { title, description, image, keywords, author, date, type } = extractMetadataFromHTML(htmlContent);
-
+            
+            const keywordSpans = keywords.map(keyword => `<span class="tag"">${keyword}</span>`).join('');
+            
             card.innerHTML = `
-                <a href="/${folderPath}/${file.name}">
-                    <div class="card-inner">
-                        <div class="card-preview-horizontal">
-                            <img src="${image}" alt="Card Image">
-                        </div>
-                        <div class="card-preview-text">
-                            <p>
-                                <span class="type">${type}</span>${title}
-                            </p>
-                            <p>${description}</p>
-                            <div class="tag-cloud"></div>
-                        </div>
+                <div class="card-inner">
+                    <div class="card-preview-horizontal">
+                        <img src="${image}" alt="Card Image">
                     </div>
-                </a>
+                    <div class="card-preview-text">
+                        <div class="card-preview-text-inner">
+                            <span class="type">${type}</span>${title}
+                            <p>${description}</p>
+                        </div>
+                        <div class="keyword-span">${keywordSpans}</div>
+                    </div>
+                </div>
             `;
 
             container.appendChild(card);
