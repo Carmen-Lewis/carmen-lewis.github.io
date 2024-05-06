@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --primary-color: #FCBF49;
+    --secondary-color: #D41956;
+    --secondary-color-light: #EF4653;
+    --accent-color: #3D3FE0;
+    --accent-color-light: #1DB8A0;
+    --light-color: #F5F3EE;
+    --dark-color: #1A1A1A;
+
+    --primary-font: 'Montserrat', sans-serif;
+    --accent-font: 'Montagu Slab', serif;
+}
+
+body {
+    height: 100vh;
+    display: grid;
+    grid-template-areas: 'header header'
+                         'nav main';
+    grid-template-columns: minmax(auto, 12em) 5fr;
+    grid-template-rows: auto 1fr auto;
+    overflow: hidden;
+
+    color: var(--dark-color);
+    font-family: var(--primary-font);
+    background-color: white;
+    margin: 0;
+}
+  
+h1 {
+    grid-area: header;
+    font-family: var(--accent-font);
+    font-weight: 400;
+}
+
+h2, h3, h4 {
+    font-family: var(--accent-font);
+    font-weight: 400;
+}
+
+p, ol {
+    font-weight: 300;
+    line-height: 1.5em;
+}
+
+header {
+    background-color: var(--light-color);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 15px;
+}
+
+header .title {
+    margin-left: 25px;
+    font-size: 25px;
+    font-family: var(--accent-font);
+}
+
+.header-left {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: white;
+}
+
+.menu-items {
+    display: none;
+    list-style-type: none;
+    margin-right: 50px;
+}
+
+.menu-items.open {
+    display: flex;
+}
+            
+.menu-items li {
+    margin-right: 25px;
+}
+
+.menu-items li:hover a {
+    background-color: var(--secondary-color);
+    transition: background-color 0.3s;
+    padding: 5px;
+    color: white;
+}
+
+.menu-items a {
+    font-family: var(--accent-font);
+    text-decoration: none;
+    color: var(--dark-color);
+    padding: 5px;
+}
+
+.menu-icon {
+    width: 50px;
+    height: 50px;
+    background-image: url('/images/menu-icon-dark.png');
+    background-size: contain;
+    cursor: pointer;
+    transition: transform 0.3s; /* Add transition for smooth rotation */
+    position: fixed;
+    z-index: 1;
+}
+
+.menu-icon.flip {
+    transform: scaleX(-1); /* Return to original orientation when menu is open */
+}
+
+.menu-icon:hover {
+    background-color: var(--secondary-color);
+    border-radius: 50%;
+    background-image: url('/images/menu-icon-light.png');
+    background-size: contain;
+}
+
+.socials {
+    display: flex;
+    justify-content: space-between;
+    width: auto;
+}
+
+.socials-icon{
+    width: 40px;
+    height: 40px;
+    background-color: var(--accent-color-light);
+    border-radius: 50%;
+    background-size: 60%; /* Adjust the size of the icon */
+    background-position: center; /* Center the icon */
+    background-repeat: no-repeat; /* Prevent the icon from repeating */
+    cursor: pointer;
+    transition: transform 0.3s;
+    margin: 0 5px;
+
+    &:hover {
+        background-color: var(--accent-color);
+        transform: scale(1.05);
+    }
+}
+
+.socials-icon.email {
+    background-image: url('/images/email-light.png');
+}
+
+.socials-icon.linkedin {
+    background-image: url('/images/linkedin-light.png');
+}
+
+.socials-icon.github {
+    background-image: url('/images/github-light.png');
+}
+
+nav span {
+    font-size: 10px;
+    font-family: var(--accent-font);
+}
+
+.main-icon {
+    width: 100px;
+    height: 100px;
+}
+
+.main-link:hover {
+    transform: scale(1.1);
+}
+
+nav {
+    grid-area: nav;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: 0;
+}
+  
+article {
+    grid-area: main;
+    padding: 15px 50px;
+    overflow-y: auto;
+    background-color: var(--light-color);
+}
+
+* {
+    box-sizing: border-box;
+}

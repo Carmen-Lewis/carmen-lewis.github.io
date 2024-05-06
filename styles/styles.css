@@ -364,6 +364,7 @@ mark {
     max-height: 100vh;
     width: 100%;
     background-color: #D41956;
+    height: 80vh !important;
 }
 
 .right-section {

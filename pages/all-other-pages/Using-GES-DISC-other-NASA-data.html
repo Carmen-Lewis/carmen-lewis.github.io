@@ -1,23 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/articles.css">
+
     <title>Using GES DISC & other NASA data</title>
-    <meta name="description" content="Unknown to some, but accessing satellite data has never been easier (in theory). It is a most useful source of data, however, learning the lay of the land is time-consuming and, quite frankly, frustrating. One of the main issues is knowing where to look for data and upon observing the amount of data available, where to start.">
+    <meta name="description"
+        content="Unknown to some, but accessing satellite data has never been easier (in theory). It is a most useful source of data, however, learning the lay of the land is time-consuming and, quite frankly, frustrating. One of the main issues is knowing where to look for data and upon observing the amount of data available, where to start.">
     <meta name="keywords" content="satellite data, solar radiation">
     <meta name="author" content="Carmen">
     <meta name="date" content="30 March 2021">
     <meta name="type" content="article">
     <meta name="image" content="/images/card-preview-placeholder.png">
-
 </head>
+
 <body>
-    <!-- Your page content here -->
+    <header class="header-left">
+        <a class="main-link" href="/pages/main.html"><img src="/images/website-icon.png" class="main-icon"></a>
+        <span class="title">CL</span>
+    </header>
+    <header>
+        <div class="menu-icon"></div>
+        <ul class="menu-items">
+            <li><a href="mission.html">mission</a></li>
+            <li><a href="about.html">about</a></li>
+            <li><a href="#articles">articles</a></li>
+            <li><a href="#projects">projects</a></li>
+            <li><a href="#research">research</a></li>
+        </ul>
+    </header>
 
-    <!-- Example of displaying metadata -->
-    <h1>Python & other tools for data analysis</h1>
+    <nav>
+        <h4>elsewhere</h4>
+        <div class="socials">
+            <a href="mailto:crmnlewis@gmail.com" class="socials-icon email"></a>
+            <a href="https://www.linkedin.com/in/carmenlewis/" class="socials-icon linkedin" target="_blank"></a>
+            <a href="https://github.com/Carmen-Lewis" class="socials-icon github" target="_blank"></a>
+        </div>
+        <br>
+        <span>&copy; Carmen Lewis 2024</span>
+    </nav>
 
-    <!-- JavaScript code can be used to fetch additional metadata if needed -->
+    <article>
+        <h1>Using GES DISC & other NASA data</h1>
+        <p>Unknown to some, but accessing satellite data has never been easier (in theory). It is a most useful
+            source of data, however, learning the lay of the land is time-consuming and, quite frankly,
+            frustrating. One of the main issues is knowing where to look for data and upon observing the amount
+            of data available, where to start.</p>
+
+        <p>NASA's Earth Science Data Systems (ESDS) Program includes twelve Distributed Active Archive Centers
+            (DAACs) that provides access to oceanography, socioeconomic, atmospheric, hydrology and geological
+            data. The objective of this article (and website) is energy meteorology, so the two DAACs we will
+            look at is ASDC (Atmospheric Science Data Center) and GES DISC (Goddard Earth Sciences Data and
+            Information Services Center). Although other remote retrieval sources exist such as Copernicus Space
+            Component Data Access system (CSCDA), I have found that NASA data includes greater spatial, temporal
+            and parameter options, and often includes datasets from Copernicus, for example.</p>
+
+        <p>In this article, we'll explore the types of data and how to filter through the many options,
+            specifically in GES DISC. We'll also have a look at the differences in file hierarchy and how to
+            quickly view the selected data set. In part II (and maybe even part III) of this article series,
+            I'll take you through the steps of plotting satellite data with Python in meaningful ways.</p>
+
+        <h2>Finding the right data (in the right way)</h2>
+        <p>There are several options for searching data in GES DISC. We can simply search specific terminology
+            such as “carbon dioxide” or “CO2” which will both show the same 143 datasets. We can further specify
+            a date range (in UTC) and limit our search to a bounding box of specific coordinates. The last
+            search parameter will not significantly decrease the number of datasets provided but is a crucial
+            parameter when we have selected a specific dataset.</p>
+
+        <p>The second option is searching by category (which includes terms such as atmospheric chemistry,
+            clouds, and precipitation), either after or before our initial search of “CO2”. We can also search
+            by category (or subject) and then by measurement (which includes terms such as absorption, carbon
+            dioxide, surface temperature). We can also search by source, processing level, project, temporal
+            resolution, and spatial resolution.</p>
+
+        <p>We can also be more specific, i.e. are we looking for carbon dioxide surface concentrations, total
+            column abundance, or vertical profile (I will elaborate on these subjects in another post). A good
+            place to start would be to:</p>
+        <ol>
+            <li>download a single file from the selected dataset and have a quick
+                look at it, or</li>
+            <li>read the dataset documentation (which you will have to do eventually).</li>
+        </ol>
+
+        <p>Let's select the dataset AIRS/Aqua L2 Support Retrieval (AIRS-only) V006 (AIRS2SUP 006). Clicking on
+            the title will take us to a page that summarises the dataset (also called product), supplies
+            documentation on the quality of the data, and several ways in which to access the data. The data
+            access options are:</p>
+        <ol>
+            <li>online archive,</li>
+            <li>Earthdata search,</li>
+            <li>Simple Subset Wizard (SSW),</li>
+            <li>OPeNDAP, and</li>
+            <li>GES DISC's “Subset/Get Data”.</li>
+        </ol>
+
+        <p>The online archive is basically an archive with several directories containing data from the
+            specific set. It is ideal for bulk downloads via FTP (File Transfer Protocol) and wget - I won't be
+            getting into this data access options, but GES DISC has a how-to with wget. I would not recommend
+            this option if you are still only exploring datasets. OPeNDAP is similar to the online archive.</p>
+
+        <p>The Earthdata search supplies a more visual platform for searching within a subset (also known as
+            granule). Due to the separation of spatial and temporal search parameters, it could result in a
+            significant amount of scrolling to find the correct granule. However, if you would like an aesthetic
+            experience, this option could work for you.</p>
+
+        <p>The Simple Subset Wizard (SSW) really is a simple way to narrow down your search within a dataset.
+            You have the option of selecting a data set keyword (which would be (AIRS2SUP 006) in this case and
+            usually auto-completed in navigation from the SSW button on the product page), a date range and a
+            spatial bounding box that you can either complete with coordinates or via a map.</p>
+
+        <p>Finally, we have the Subset/Get Data option, which is very similar to the Simple Subset Wizard. I
+            have found this the most intuitive way to search for, and download subsets. You will see a pop-up
+            window, with options to change the download method, date range, (spatial) region, and in some cases
+            the file format. You can also see the estimated size of the results, which are often humungous
+            before refining the subset search.</p>
+    </article>
+
+    <script src="/scripts/main.js"></script>
 </body>
+
 </html>
