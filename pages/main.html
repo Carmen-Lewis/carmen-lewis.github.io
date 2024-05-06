@@ -5,84 +5,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>CL</title>
-    <link rel="stylesheet" href="/styles/styles.css">
+    <link rel="stylesheet" href="/styles/pages.css">
 </head>
 
 <body>
-    <div class="right-section"></div>
-    <div class="header-banner">
-        <div class="header-items">
-            <div class="title-container">
-                <img src="/images/website-icon.png" class="icon">
-                <h1 class="title">CL</h1>
-            </div>
-            <div class="menu-container">
-                <ul class="menu-items">
-                    <li><a href="mission.html">mission</a></li>
-                    <li><a href="about.html">about</a></li>
-                    <li><a href="#articles">articles</a></li>
-                    <li><a href="#projects">projects</a></li>
-                    <li><a href="#research">research</a></li>
-                </ul>
-                <div class="menu-icon"></div>
-            </div>
+    <header class="header-left">
+        <a class="main-link" href="/pages/main.html"><img src="/images/website-icon.png" class="main-icon"></a>
+        <span class="title">CL</span>
+    </header>
+    <header>
+        <div class="menu-icon"></div>
+        <ul class="menu-items">
+            <li><a href="/pages/mission.html">mission</a></li>
+            <li><a href="/pages/about.html">about</a></li>
+            <li><a href="#articles">articles</a></li>
+            <li><a href="#projects">projects</a></li>
+            <li><a href="#research">research</a></li>
+        </ul>
+    </header>
+
+    <nav>
+        <h4>elsewhere</h4>
+        <div class="socials">
+            <a href="mailto:crmnlewis@gmail.com" class="socials-icon email"></a>
+            <a href="https://www.linkedin.com/in/carmenlewis/" class="socials-icon linkedin" target="_blank"></a>
+            <a href="https://github.com/Carmen-Lewis" class="socials-icon github" target="_blank"></a>
         </div>
+        <br>
+        <span>&copy; Carmen Lewis 2024</span>
+    </nav>
+
+    <div class="intro-container">
+        <p>Hi, I'm Carmen, a <a href="">learning</a> experience designer, <a href="">data</a> scientist, and <a
+                href="">researcher</a> deeply intrigued by making meaning from data and the human cognitive
+            development process.</p>
     </div>
 
-    <div class="main-container">
-        <div class="left-main-container">
-            <p>Hi, I'm Carmen, a <a href="">learning</a> experience designer, <a href="">data</a> scientist, and <a href="">researcher</a> deeply intrigued by making meaning from data and the human cognitive development process.</p>
-            <div class="elsewhere-container">
-                <p class="accent-font">elsewhere</p>
-                <div class="socials">
-                    <a href="mailto:crmnlewis@gmail.com" class="socials-icon email"></a>
-                    <a href="https://www.linkedin.com/in/carmenlewis/" class="socials-icon linkedin" target="_blank"></a>
-                    <a href="https://github.com/Carmen-Lewis" class="socials-icon github" target="_blank"></a>
+    <article class="carousel">
+        <div class="carousel-container">
+            <button id="prev-btn" class="prev-btn"> </button>
+            <div id="item-list" class="item-list">
+                <div id="item" class="item" />
+                <div class="card-preview">
+                    <img src="/images/card-preview-placeholder.png">
                 </div>
+                <p>
+                    <span class="type">article</span>Using GES DISC & other NASA data
+                </p>
             </div>
+            <button id="next-btn" class="next-btn"> </button>
         </div>
-        <div class="right-main-container">
-            <div class="carousel-container">
-                <div class="carousel-view">
-                    <button id="prev-btn" class="prev-btn"> </button>
-                    <div id="item-list" class="item-list">
-                        <div id="item" class="item"/>
-                            <div class="card-preview">
-                                <img src="/images/card-preview-placeholder.png">
-                            </div>
-                            <p>
-                                <span class="type">article</span>Using GES DISC & other NASA data
-                            </p>
-                        </div>
-                        <div id="item" class="item""/>
-                            <div class="card-preview">
-                                <img src="/images/card-preview-placeholder.png">
-                            </div>
-                            <p>
-                                <span class="type">project</span>Solar Radiation: The Fundamentals
-                            </p>
-                        </div>
-                        <div id="item" class="item""/>
-                            <div class="card-preview">
-                                <img src="/images/card-preview-placeholder.png">
-                            </div>
-                            <p>
-                                <span class="type">article</span> Solar Radiation: The Big Picture
-                            </p>
-                        </div>
-                    </div>
-                    <button id="next-btn" class="next-btn"> </button>
-                </div>
-            </div>
-            <p><a href="everything.html">see more of everything</a></p>
-        </div>
-    </div>
-
-    <div class="copyright">
-        <span>&copy;</span>
-        <span>Carmen Lewis 2024</span>
-    </div>
+        <p><a href="everything.html">see more of everything</a></p>
+    </article>
 
     <script src="/scripts/main.js"></script>
+    <script src="/scripts/fetch-pages.js"></script>
 </body>
+
 </html>

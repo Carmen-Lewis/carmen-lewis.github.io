@@ -63,6 +63,34 @@ async function generateCardsFromFiles(files) {
         }
     }
 }
+// Create cards for carousel
+async function generateSmallCardsFromFiles(files) {
+    const container = document.querySelector('.item-list');
+
+    for (const file of files) {
+        if (file.type === 'file' && file.name.endsWith('.html')) {
+            const cardSmall = document.createElement('div');
+            cardSmall.classList.add('item');
+
+            const response = await fetch(file.download_url);
+            const htmlContent = await response.text();
+            const { title, image, type } = extractMetadataFromHTML(htmlContent);
+            
+            cardSmall.innerHTML = `
+                <div class="carousel-card-inner">
+                    <div class="card">
+                        <div class="card-preview">
+                            <img src="${image}" alt="Card Image">
+                        </div>
+                    <div>
+                    <span class="type">${type}</span>${title}
+                </div>
+            `;
+
+            container.appendChild(cardSmall);
+        }
+    }
+}
 
 // Fetch files from the specified folder and generate cards
 fetchFilesFromFolder(folderPath)

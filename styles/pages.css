@@ -19,7 +19,7 @@ body {
     display: grid;
     grid-template-areas: 'header header'
                          'nav main';
-    grid-template-columns: minmax(auto, 12em) 5fr;
+    grid-template-columns: minmax(auto, 13.5em) 5fr;
     grid-template-rows: auto 1fr auto;
     overflow: hidden;
 
@@ -50,11 +50,11 @@ header {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    padding: 15px;
+    padding: 30px;
 }
 
 header .title {
-    margin-left: 25px;
+    margin-left: 15px;
     font-size: 25px;
     font-family: var(--accent-font);
 }
@@ -62,7 +62,6 @@ header .title {
 .header-left {
     display: flex;
     flex-direction: row;
-    align-items: center;
     background-color: white;
 }
 
@@ -168,7 +167,7 @@ nav span {
 
 nav {
     grid-area: nav;
-    padding: 1rem;
+    padding: 30px;
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -184,4 +183,109 @@ article {
 
 * {
     box-sizing: border-box;
+}
+
+.intro-container {
+    width: 150%;
+    padding-right: 15px;
+    z-index: 1;
+    margin-left: 30px;
+}
+
+.carousel {
+    padding: 15px 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.carousel-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-view .item-list {
+    max-width: 950px;
+    width: 100%;
+    display: flex;
+    gap: 20px;
+    scroll-behavior: smooth;
+    transition: all 0.25s ease-in;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    overflow: auto;
+    scroll-snap-type: x mandatory;
+    padding: 15px;
+    padding-bottom: 40px;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.item-list::-webkit-scrollbar {
+    display: none;
+}
+  
+.prev-btn {
+    border: none;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    background: url('/images/next-dark.png');
+    transform: scaleX(-1); 
+    background-size: cover;
+    background-repeat: none;
+    cursor: pointer;
+    transition: transform 0.3s; /* Add transition for smooth rotation */
+
+    &:hover {
+        transform: scaleX(-1) scale(1.3);
+    }
+}
+  
+.next-btn {
+    border: none;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    background: url('/images/next-dark.png');
+    background-size: cover;
+    background-repeat: none;
+    cursor: pointer;
+    transition: transform 0.3s; /* Add transition for smooth rotation */
+
+    &:hover {
+        transform: scale(1.3);
+    }
+}
+  
+.item {
+    scroll-snap-align: center;
+    min-width: 318px;
+    height: 382px;
+    background-color: white;
+    border-radius: 2px;
+    padding: 15px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+
+    p {
+        margin-top: 15px;
+        margin-right: 0;
+    }
+}
+
+.card-preview {
+    height: 300px;
+    width: 100%;
+
+    img {
+        width: 100%; /* Allow the width to adjust automatically */
+        max-width: 100%; /* Ensure the width does not exceed the container width */
+        max-height: 100%;
+        height: 100%; /* Fill the entire height of the container */
+        object-fit: cover; /* Maintain aspect ratio and fit the entire image within the container */
+    }
 }
