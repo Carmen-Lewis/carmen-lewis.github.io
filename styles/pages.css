@@ -319,14 +319,81 @@ article {
 
 .card-preview {
     width: 100%;
+}
 
-    img {
-        width: 100%; /* Allow the width to adjust automatically */
-        max-width: 100%; /* Ensure the width does not exceed the container width */
-        max-height: 100%;
-        height: 100%; /* Fill the entire height of the container */
-        object-fit: cover; /* Maintain aspect ratio and fit the entire image within the container */
+.card-preview img {
+    width: 100%; /* Allow the width to adjust automatically */
+    max-width: 100%; /* Ensure the width does not exceed the container width */
+    max-height: 100%;
+    height: 100%; /* Fill the entire height of the container */
+    object-fit: cover; /* Maintain aspect ratio and fit the entire image within the container */
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 2px;
+    padding: 15px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+    display: flex;
+    flex-direction: row;
+    transition: transform 0.3s;
+    cursor: pointer;
+    height: 180px;
+
+    &:hover {
+        transform: scale(1.01);
     }
+}
+
+.card-inner {
+    display: flex;
+    flex-direction: row;
+}
+
+.card-preview-horizontal {
+    height: 100%;
+}
+
+.card-preview-horizontal img {
+    height: 100%;
+    object-fit: cover; 
+}
+
+.card-preview-text {
+    position: relative;
+    height: auto;
+    margin-left: 15px;
+}
+
+.card-preview-text p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Number of lines to show before truncating */
+    -webkit-box-orient: vertical;
+    max-height: 72px;
+}
+
+.keyword-span {
+    position: relative;
+    bottom: 0px;
+    max-height: 19px;
+}
+
+.tag {
+    margin-right: 5px;
+    padding: 5px;
+    font-size: small;
+    background-color: var(--light-color);
+    color: var(--accent-color-light); 
+    cursor: pointer;
+    font-family: var(--primary-font);
 }
 
 .type {
@@ -336,8 +403,6 @@ article {
     background-color: var(--light-color);
     padding: 5px;
     cursor: pointer;
-    transition: transform 0.3s;
-    display: inline-block;
     font-family: var(--primary-font);
 }
 
