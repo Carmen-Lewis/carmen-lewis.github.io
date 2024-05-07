@@ -43,6 +43,36 @@ h2, h3, h4 {
 p, ol {
     font-weight: 300;
     line-height: 1.5em;
+    z-index: 1;
+}
+
+a {
+    width: fit-content;
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    font-family: var(--accent-font);
+    color: var(--dark-color);
+}
+
+a:visited {
+    color: var(--dark-color);
+}
+
+p a::after {
+    content: '';
+    position: absolute;
+    left: -5px;
+    bottom: 2px;
+    width: 100%;
+    background-color: var(--primary-color);
+    transition: transform 0.3s;
+    z-index: -1;
+    padding: 5px;
+}
+
+a:hover::after {
+    height: 60%; /* Increase height on hover */
 }
 
 header {
@@ -193,10 +223,9 @@ article {
 }
 
 .carousel {
-    padding: 15px 100px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding: 15px 50px;
+    padding-left: 150px;
+    text-align: center;
 }
 
 .carousel-container {
@@ -206,7 +235,7 @@ article {
     align-items: center;
 }
 
-.carousel-view .item-list {
+.item-list {
     max-width: 950px;
     width: 100%;
     display: flex;
@@ -262,23 +291,32 @@ article {
 .item {
     scroll-snap-align: center;
     min-width: 318px;
-    height: 382px;
     background-color: white;
     border-radius: 2px;
     padding: 15px;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
     display: flex;
     flex-direction: column;
-    align-items: left;
+    transition: transform 0.3s;
+    cursor: pointer;
 
-    p {
-        margin-top: 15px;
-        margin-right: 0;
+    &:hover {
+        transform: scale(1.05);
     }
 }
 
+.item p {
+    margin-top: 15px;
+    margin-right: 0;
+}
+
+.card-inner-small {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
 .card-preview {
-    height: 300px;
     width: 100%;
 
     img {
@@ -288,4 +326,28 @@ article {
         height: 100%; /* Fill the entire height of the container */
         object-fit: cover; /* Maintain aspect ratio and fit the entire image within the container */
     }
+}
+
+.type {
+    width: fit-content;
+    color: var(--secondary-color-light);
+    font-size: small;
+    background-color: var(--light-color);
+    padding: 5px;
+    cursor: pointer;
+    transition: transform 0.3s;
+    display: inline-block;
+    font-family: var(--primary-font);
+}
+
+.button {
+    padding: 5px;
+}
+
+.button:hover {
+    background-color: var(--secondary-color);
+    transition: background-color 0.3s;
+    padding: 5px;
+    color: white;
+    display: inline-block;
 }
