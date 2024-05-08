@@ -4,8 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>mission</title>
+    <title>articles</title>
     <link rel="stylesheet" href="/styles/pages.css">
+
+    <script src="/scripts/main.js"></script>
+    <script type="module" src="/scripts/fetch-pages.js"></script>
+    <script> const type = 'article'; </script>
+    <script type="module" src="/scripts/everything-cards.js"></script>
 </head>
 
 <body>
@@ -36,16 +41,9 @@
     </nav>
 
     <article>
-        <h1>mission</h1>
-        <p>I am dedicated to democratizing intellectual growth and learning by leveraging my expertise in learning
-            experience design and strong technical background. Grounded in principles of fairness, transparency, and
-            authenticity, I strive to make education accessible to all, bridging the digital divide and fostering a
-            community of empowered learners. Through my leadership, intuition, and commitment to sustainability, I aim
-            to create engaging, digestible learning experiences that inspire both students and future employers alike.
-        </p>
+        <h2>articles</h2>
+        <div class="card-container"></div>
     </article>
-
-    <script src="/scripts/main.js"></script>
 </body>
 
 </html>

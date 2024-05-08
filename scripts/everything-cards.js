@@ -3,7 +3,7 @@ import { fetchFilesFromFolder, extractMetadataFromHTML } from './fetch-pages.js'
 const folderPath = 'pages/all-other-pages';
 
 // Function to generate card elements based on file names and metadata
-async function generateCardsFromFiles(files) {
+export async function generateCardsFromFiles(files, filter) {
     const container = document.querySelector('.card-container');
 
     for (const file of files) {
@@ -20,27 +20,29 @@ async function generateCardsFromFiles(files) {
             const htmlContent = await response.text();
             const { title, description, image, keywords, author, date, type } = extractMetadataFromHTML(htmlContent);
             
-            const keywordSpans = keywords.map(keyword => `<span class="tag"">${keyword}</span>`).join('');
-            
-            card.innerHTML = `
-                <div class="card-inner">
-                    <div class="card-preview-horizontal">
-                        <img src="${image}" alt="Card Image">
+            if (!filter || type === filter) {
+                const keywordSpans = keywords.map(keyword => `<span class="tag"">${keyword}</span>`).join('');
+                
+                card.innerHTML = `
+                    <div class="card-inner">
+                        <div class="card-preview-horizontal">
+                            <img src="${image}" alt="Card Image">
+                        </div>
+                        <div class="card-preview-text">
+                            <span class="type">${type}</span> ${title}
+                            <p>${description}</p>
+                            <div class="keyword-span">${keywordSpans}</div>
+                        </div>
                     </div>
-                    <div class="card-preview-text">
-                        <span class="type">${type}</span> ${title}
-                        <p>${description}</p>
-                        <div class="keyword-span">${keywordSpans}</div>
-                    </div>
-                </div>
-            `;
+                `;
 
-            container.appendChild(card);
+                container.appendChild(card);
+            }
         }
     }
 }
 
 // Fetch files from the specified folder and generate cards
-fetchFilesFromFolder(folderPath)
-    .then(data => generateCardsFromFiles(data))
+fetchFilesFromFolder(folderPath, type)
+    .then(data => generateCardsFromFiles(data, type))
     .catch(error => console.error('Error fetching files:', error));
